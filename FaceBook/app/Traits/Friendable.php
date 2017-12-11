@@ -2,9 +2,7 @@
 namespace App\Traits;
 use App\friendships;
 trait Friendable {
-    public function test() {
-        return 'hi';
-    }
+  
     
     public function addFriend($id){
         

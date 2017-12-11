@@ -31,6 +31,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/requests', 'ProfileController@requests');
     Route::get('/accept/{name}/{id}', 'ProfileController@accept');
     Route::get('friends', 'ProfileController@friends');
- 
+    Route::get('/accept/{name}/{id}', 'ProfileController@accept');
+    
+
+ Route::get('/newsfeed', 'PostController@getpostsbytime');
+Route::post('/createpost', [
+    'uses' => 'PostController@postCreatePost',
+    'as' => 'post.create',
+    'middleware' => 'auth'
+]);
+
+
     });
 Route::get('/logout', 'Auth\LoginController@logout');

@@ -11,7 +11,7 @@
                        {{Auth::user()->name}}</a>
                      </li>
                      <li>
-                       <a href="{{url('/')}}"> <img src="{{url('../')}}/public/img/news_feed.png"
+                       <a href="{{url('/newsfeed')}}"> <img src="{{url('../')}}/public/img/news_feed.png"
                        width="32" style="margin:5px"  />
                        News Feed</a>
                      </li>

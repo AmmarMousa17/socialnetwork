@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\friendships;
 
 
 class ProfileController extends Controller
@@ -29,10 +29,41 @@ class ProfileController extends Controller
         $allUsers = DB::table('profiles')
         ->leftJoin('users', 'users.id', '=', 'profiles.user_id')
         ->where('users.id', '!=', $uid)->get();
+    
         return view('profile.findFriends', compact('allUsers'));
     }
      public function sendRequest($id) {
         Auth::user()->addFriend($id);
         return back();
+
     }
+     public function requests() {
+        $uid = Auth::user()->id;
+        $FriendRequests = DB::table('friendships')
+                        ->rightJoin('users', 'users.id', '=', 'friendships.requester')
+                        ->where('status', '=', Null)
+                        ->where('friendships.user_requested', '=', $uid)->get();
+        return view('profile.requests', compact('FriendRequests'));
+    }
+
+
+     public function accept($name, $id) {
+        $uid = Auth::user()->id;
+        $checkRequest = friendships::where('requester', $id)
+                ->where('user_requested', $uid)
+                ->first();
+        if ($checkRequest) {
+            // echo "yes, update here";
+            $updateFriendship = DB::table('friendships')
+                    ->where('user_requested', $uid)
+                    ->where('requester', $id)
+                    ->update(['status' => 1]);
+                    return back()->with('msg', 'You are now Friend with this user');
+            
+        } else {
+            return back()->with('msg', 'You are now Friend with this user');
+
+        }
+    }
+
 }

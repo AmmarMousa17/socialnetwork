@@ -2,9 +2,9 @@
 <html lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://use.fontawesome.com/595a5020bd.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,17 +16,54 @@
 .left-sidebar li { padding:10px;
   border-bottom:1px solid #ddd;
 list-style:none; margin-left:-20px}
-.msgDiv li:hover{
-  cursor:pointer;
-}
-.jobDiv{border:1px solid #ddd; margin:10px; width:30%; float:left; padding:10px; color:#000}
+
+
 .caption li {list-style:none !important; padding:5px}
-.jobDiv .company_pic{width:50px; height:50px; margin:5px}
-.jobDetails h4{border:1px solid green; width:60%;
-padding:5px; margin:0 auto; text-align:center; color:green}
-.jobDetails .job_company{padding-bottom:10px; border-bottom:1px solid #ddd; margin-top:20px}
-.jobDetails .job_point{color:green; font-weight:bold}
-.jobDetails .email_link{padding:5px; border:1px solid green; color:green}
+
+  .new-post {
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.new-post header,
+.posts header {
+    margin-bottom: 20px;
+}
+
+ .post {
+    padding-left: 10px;
+    border-left: 3px solid #a21b24;
+    margin-bottom: 30px;
+}
+
+ .info {
+    color: #aaa;
+    font-style: italic;
+}
+
+.error,
+.success {
+    text-align: center;
+}
+
+.error {
+    border: 1px solid red;
+    background-color: #f9b5af;
+    color: red;
+}
+
+.error ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.success {
+    border: 1px solid green;
+    background-color: #d1f9da;
+    color: green;
+}
+
 </style>
     </head>
     <body>
@@ -35,7 +72,7 @@ padding:5px; margin:0 auto; text-align:center; color:green}
                 <div class="container">
                     <div class="navbar-header">
 
-                        <!-- Collapsed Hamburger -->
+                        
                         <button type="button" class="navbar-toggle collapsed"
                         data-toggle="collapse" data-target="#app-navbar-collapse">
                             <span class="sr-only">Toggle Navigation</span>
@@ -44,9 +81,10 @@ padding:5px; margin:0 auto; text-align:center; color:green}
                             <span class="icon-bar"></span>
                         </button>
 
-                        <!-- Branding Image -->
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'LaraBook') }}
+                        
+                          <a class="navbar-brand" href="{{ url('/') }}">
+                            
+                             FaceBook
                         </a>
 
 
@@ -83,7 +121,7 @@ padding:5px; margin:0 auto; text-align:center; color:green}
                                
                             </a>
                           <ul class="dropdown-menu" role="menu" style="width:320px">
-                            <div>here i will show my messages list with images users</div>
+                         
                             </ul>
                             </li>
 
