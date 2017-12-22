@@ -72,8 +72,8 @@
                         <a href="{{ url('/home') }}">Home</a>
                          <a href="{{ url('/profile') }}/{{Auth::user()->slug}}">Profile</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="http://localhost:8080/FaceBook/index.php/login">Login</a>
+                        <a href="http://localhost:8080/FaceBook/index.php/register">Register</a>
                     @endauth
                 </div>
             @endif

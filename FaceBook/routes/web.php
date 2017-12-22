@@ -26,20 +26,30 @@ Route::group(['middleware' => 'auth'], function () {
     return view ('profile.pic');
   });
   Route::post('/uploadPhoto', 'ProfileController@uploadPhoto');
-  Route::get('/findFriends', 'ProfileController@findFriends');
-    Route::get('/addFriend/{id}', 'ProfileController@sendRequest');
-    Route::get('/requests', 'ProfileController@requests');
-    Route::get('/accept/{name}/{id}', 'ProfileController@accept');
+  Route::get('/findFriends', 'RequestController@findFriends');
+    Route::get('/addFriend/{id}', 'RequestController@sendRequest');
+    Route::get('/requests', 'RequestController@requests');
+    Route::get('/accept/{name}/{id}', 'RequestController@accept');
     Route::get('friends', 'ProfileController@friends');
-    Route::get('/accept/{name}/{id}', 'ProfileController@accept');
+    Route::get('/accept/{name}/{id}', 'RequestController@accept');
     
 
- Route::get('/newsfeed', 'PostController@getpostsbytime');
+Route::get('/newsfeed', [
+'uses' =>'PostController@getpost',
+'as'=>'newsfeed'
+]
+
+  );
 Route::post('/createpost', [
     'uses' => 'PostController@postCreatePost',
     'as' => 'post.create',
     'middleware' => 'auth'
 ]);
+Route::post('/like', [
+    'uses' => 'PostController@postLikePost',
+    'as' => 'like'
+]);
+
 
 
     });

@@ -31,19 +31,28 @@
                     <div class="info">
                         Posted by {{ $post->name }} on {{ $post->created_at }}
                     </div>
-                    
+                    <div class="interaction">
+                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a> |
+                        <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post' : 'Dislike' : 'Dislike'  }}</a>
+                    </div>
                 </article>
             @endforeach
         </div>
-
+       
     </section>
+
+
      </div>
             </div>
         </div>
     </div>
 </div>
-<style>
-  
-</style>
-  
+ 
+   <script>
+        var token = '{{ Session::token() }}';
+       
+        var urlLike = "{{ route('like') }}";
+    </script>
+
+
     @endsection
